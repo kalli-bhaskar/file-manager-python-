@@ -4,7 +4,7 @@ import os
 import easygui as gui
 from tkinter import filedialog
 from tkinter import messagebox as mb
-
+import send2trash
 
 def open_window():
     read = gui.fileopenbox()
@@ -29,7 +29,7 @@ def copy_file():
 def del_file():
     delete_file = open_window()
     if os.path.exists(delete_file):
-        os.remove(delete_file)
+        send2trash.send2trash(delete_file)
     else:
         mb.showinfo('confirmation', "File not Found")
 
@@ -68,3 +68,10 @@ def list_file():
 
 root = Tk()
 canv = Canvas(root, width=500, height=500, bg='grey')
+canv.grid(row=0, column=2)
+
+
+Button(root, text = "Open a File", command = open_file).grid(row=15, column =2)
+Button(root, text = "Delete a File", command = del_file).grid(row = 25, column = 2)
+Button(root, text = "List", command = list_file()).grid(row = 25, column = 2)
+root.mainloop()
