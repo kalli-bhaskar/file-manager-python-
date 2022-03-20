@@ -9,3 +9,7 @@ perform
 .delete-file
 
 .list-all-files
+
+.move-file
+
+.rename-file
